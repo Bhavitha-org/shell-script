@@ -27,6 +27,12 @@ fi
 
 for package in $@
 do
-    dnf install $package -y
-    VALIDATE $? "Installing $package"
+    dnf list installed $package  &>> LOGS_FILE
+    if [ $? -ne 0 ]; then                              #instead of blindly installing package first we check whether the package is already installed or not
+        echo "$package not installed...installing"
+        dnf install $package -y   &>> LOGS_FILE
+        VALIDATE $? "Installing $package"
+    else 
+        echo "$package already installed...SKIPPING"
+    fi
 done
