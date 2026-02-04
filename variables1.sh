@@ -19,7 +19,7 @@ sleep 10
  END_TIME=$(date +%s)
  echo "script ended at $END_TIME"
 
- echo "script executed in $(($END_TIME-$START_TIME))"
+ echo "script executed in $(($END_TIME-$START_TIME)) sec"
 
 
 
