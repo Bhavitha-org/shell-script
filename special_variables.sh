@@ -10,3 +10,4 @@ echo "PID of this script: $$"
 sleep 100 &
 echo "PID of recently executed background process: $!"
 echo "All args passed to script: $*"   #it treats all args as single arg, so use $@
+echo "Exit status of previous command: $?"
