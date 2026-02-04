@@ -12,5 +12,6 @@ dnf install nginx -y
 
 if [ $? -ne 0 ]; then                          #we know that after running dnf, nginx is installed, but shell dk so we validate it.
     echo "installing nginx is FAILURE"
+    exit 1
 else 
     echo "installing nginx is SUCCESS"
