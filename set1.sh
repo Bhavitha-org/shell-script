@@ -4,7 +4,7 @@ USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="/var/log/shell-script/$0.log"
 
-set -e
+set -e #will exit when error found, with out a log.
 
 R="\e[31m"
 G="\e[32m"
