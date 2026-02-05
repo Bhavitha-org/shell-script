@@ -10,7 +10,7 @@ Y="\e[33m"
 N="\e[0m"
 
 if [ $USERID -ne 0 ]; then
-    echo "$R please run this script with root user access $N" | tee -a $LOGS_FILE
+    echo -e "$R please run this script with root user access $N" | tee -a $LOGS_FILE
     exit 1
 fi
 
@@ -28,10 +28,10 @@ for package in $@
 do
     dnf list installed $package &>> LOGS_FILE
     if [ $? -ne 0 ]; then                              
-        echo "$package not installed...$G installing now $N"
+        echo -e "$package not installed...$G installing now $N"
         dnf install $package -y &>> LOGS_FILE
         VALIDATE $? "Installing $package"
     else 
-        echo "$package already installed...$Y SKIPPING $N"
+        echo -e "$package already installed...$Y SKIPPING $N"
     fi
 done
