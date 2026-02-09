@@ -7,9 +7,9 @@ if [ ! -d "$LOGS_DIR" ]; then
     echo "$LOGS_DIR doesn't exist"
 fi
 FILES_TO_DELETE=$(find $LOGS_DIR -name "*.log" -mtime +14)
-echo "$FILES_TO_DELETE"
+# echo "$FILES_TO_DELETE"
 
 while IFS= read -r filepath;
 do 
-    echo "$filepath"
+    echo "Deleting file: $filepath"
 done <<< $FILES_TO_DELETE
