@@ -51,7 +51,7 @@ log "Source Directory: $SOURCE_DIR"
 log "Destination Directory: $DEST_DIR"
 log "Days: $DAYS" 
 
-if [ -z $FILES ]; then        #checking variable empty or not
+if [ -z "${FILES}" ]; then        #checking variable empty or not
     log "No files to archieve...$Y SKIPPING $N"
 else
     #app-logs-$timestamp.zip
