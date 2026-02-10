@@ -13,6 +13,10 @@ SOURCE_DIR=$1
 DEST_DIR=$2
 DAYS=${3:-14} #14days is the default value when user doesn't pass arg
 
+log() {
+    echo -e "$(date "+%Y-%m-%d" %H:%M:%S") | $1" | tee -a $LOGS_FILE
+}
+
 if [ $USERID -ne 0 ]; then
     echo -e " $R please run this script with root user access $N"
 fi
@@ -22,10 +26,6 @@ mkdir -p $LOGS_FOLDER
 USAGE() {
     echo -e "$R USAGE: sudo backup <SOURCE_DIR> <DEST_DIR> <DAYS>[default 14 days] $N"
     exit 1
-}
-
-log() {
-    echo -e "$(date "+%Y-%m-%d" %H:%M:%S") | $1" | tee -a $LOGS_FILE
 }
 
 if [ $# -lt 2 ]; then
