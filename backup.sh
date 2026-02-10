@@ -51,7 +51,13 @@ log "Source Directory: $SOURCE_DIR"
 log "Destination Directory: $DEST_DIR"
 log "Days: $DAYS" 
 
-if [ -z $FILES ]; then
+if [ -z $FILES ]; then        #checking variable empty or not
     log "No files to archieve...$Y SKIPPING $N"
+else
+    #app-logs-$timestamp.zip
+    log "Files found to archieve: $FILES"
+    TIMESTAMP=$(date +%F-%H-%M-%S)
+    ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.tar.gz"
+    echo "Archieve name: $ZIP_FILE_NAME"
 fi
 
