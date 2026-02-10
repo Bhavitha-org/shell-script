@@ -59,5 +59,28 @@ else
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.tar.gz"
     echo "Archieve name: $ZIP_FILE_NAME"
+    find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | tar -zcvf $ZIP_FILE_NAME        #output of find, to input of tar
+
+    #check archieve is success or not
+    if [ -f $ZIP_FILE_NAME ]; then
+        log "Archeival is...$G SUCCESS $N"
+        while IFS= read -r filepath;
+            do 
+                echo "Deleting file: $filepath"
+                
+                rm -f $filepath
+                echo "Deleted file: $filepath"
+            done <<< $FILES_TO_DELETE
+    else
+        log "Archeival is...$R FAILURE $N"
+        exit 1
+    fi
 fi
 
+
+# 1. user should pass source_dir and dest_dir, default is 14 days, but user can override
+# 2. verify the directories exist and root user too
+# 3. find the files
+# 4. archieve them and place into dest_dir
+# 5. check archeive is success or not
+# 6. you can delete from source_dir
