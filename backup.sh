@@ -13,8 +13,8 @@ SOURCE_DIR=$1
 DEST_DIR=$2
 DAYS=${3:-14} #14days is the default value when user doesn't pass arg
 
-log() {
-    echo -e "$(date "+%Y-%m-%d" %H:%M:%S") | $1" | tee -a $LOGS_FILE
+log(){
+    echo -e "$(date "+%Y-%m-%d %H:%M:%S") | $1" | tee -a $LOGS_FILE
 }
 
 if [ $USERID -ne 0 ]; then
