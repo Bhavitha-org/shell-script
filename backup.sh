@@ -25,20 +25,33 @@ USAGE() {
     exit 1
 }
 
+log() {
+    echo -e "$(date "+%Y-%m-%d %H:%M:%S") | $1" | tee -a $LOGS_FILE
+}
+
 if [ $# -lt 2 ]; then       #if min args<2, then call usage and throw error
     USAGE
 fi 
 
 
 if [ ! -d $SOURCE_DIR ]; then 
-    echo -e "$R $SOURCE_DIR doesn't exist $N"
+    echo -e "$R Source Directory: $SOURCE_DIR doesn't exist $N"
     exit 1
 fi 
 
 if [ ! -d $DEST_DIR ]; then 
-    echo -e "$R $DEST_DIR doesn't exist $N"
+    echo -e "$R Destination Directory: $DEST_DIR doesn't exist $N"
     exit 1
 fi
+
+#find the files
+
+FILES=$(find $SOURCE_DIR -name "*.log" -tyoe f -mtime +$DAYS)
+
+log "Backup started"
+log "Source Directory: $SOURCE_DIR"
+log "Destination Directory: $DEST_DIR"
+log "Days: $DAYS"
 
 
 
