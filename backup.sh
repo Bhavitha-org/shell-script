@@ -25,7 +25,7 @@ USAGE() {
     exit 1
 }
 
-if [ $# -le 2 ]; then       #if min args<2, then call usage and throw error
+if [ $# -lt 2 ]; then       #if min args<2, then call usage and throw error
     USAGE
 fi 
 
