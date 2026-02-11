@@ -10,6 +10,10 @@ G="\e[32m"
 Y="\e[33m"
 N=="\e[0m"
 
+SOURCE_DIR=$1
+DEST_DIR=$2
+DAYS=${3:-14} #$3, if no arg given then default 14
+
 if [ $USERID -ne 0 ]; then
     echo -e "$R Please run this script with root user access $N"
 fi
@@ -25,6 +29,16 @@ if [ $# -le 2 ]; then       #if min args<2, then call usage and throw error
     USAGE
 fi 
 
+
+if [ ! -d $SOURCE_DIR ]; then 
+    echo -e "$R $SOURCE_DIR doesn't exist $N"
+    exit 1
+fi 
+
+if [ ! -d $DEST_DIR ]; then 
+    echo -e "$R $DEST_DIR doesn't exist $N"
+    exit 1
+fi
 
 
 
