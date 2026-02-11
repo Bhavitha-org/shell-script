@@ -53,7 +53,11 @@ log "Source Directory: $SOURCE_DIR"
 log "Destination Directory: $DEST_DIR"
 log "Days: $DAYS"
 
+#now zip the files, before that check whether the variable is empty
 
+if [ -z $FILES ]; then 
+    log "No files to Archieve...$Y SKIPPING $N"
+fi
 
 
 
