@@ -5,6 +5,11 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 MESSAGE=""
+IP_ADDRESS=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+
+log() {
+    echo -e "date "+%Y-%m-d %H:%M:%S") | $1"
+}
 
 DISK_USAGE=$(df -hT | grep -v Filesystem)
 USAGE_THRESHOLD=3
@@ -20,3 +25,6 @@ do
 done <<< $DISK_USAGE
 
 echo -e "$MESSAGE"
+
+sh mail.sh "lbhavitha342@gmail.com" "High Disk Usage Alert on $IP_ADDRESS" "$MESSAGE_BODY" "$HIGH_DISK_USAGE"
+"$IP_ADDRESS" "DevOps Team"
