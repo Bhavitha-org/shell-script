@@ -17,3 +17,5 @@ echo "Content-Type: text/html"
 echo ""
 echo "$FINAL_MESSAGE"
 } | msmtp "$TO_ADDRESS"
+
+# mgka jhac ymxb oydr
